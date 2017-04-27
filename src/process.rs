@@ -21,18 +21,19 @@ fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> i
                 continue;
             }
 
-            match path.extension() {
-                Some(x) => {
-                    if x != "gitignore" {
-                        continue;
-                    }
-                }
-                None => continue,
-            }
-
             if path.is_dir() {
                 visit_dirs(&path, options)?
             } else {
+                match path.extension() {
+                    Some(x) => {
+                        if x != "gitignore" {
+                            continue;
+                        }
+                    }
+                    None => continue,
+                }
+
+
                 let f = Box::new(entry
                                      .path()
                                      .file_stem()
