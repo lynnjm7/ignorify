@@ -11,6 +11,14 @@ There are several different ways to use this app. For some instructions use
 ignorify --help
 ```
 
+To setup this tool, simply run: 
+```
+ignorify --init
+```
+This will clone the snippets directory down to the proper place in your home directory
+and perform any other necessary setup tasks. After this init operation has been performed
+you should be good to create ignore files as described below.
+
 To list the available snippets, use: 
 ```
 ignorify --list
