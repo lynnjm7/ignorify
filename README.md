@@ -49,6 +49,11 @@ You can also use this to append new snippets to an existing ignore file:
 ignorify rust  >> .gitignore 
 ```
 
+# Disclaimer
+I have tested and use this tool on Linux. I haven't tested it on any other operating 
+system. I see no reason why it shouldn't work. I do not currently have any plans 
+on porting this tool to any other operating system. 
+
 # License
 This project uses the MIT license. Please refer to LICENSE for more details. 
 
