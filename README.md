@@ -11,6 +11,7 @@ There are several different ways to use this app. For some instructions use
 ignorify --help
 ```
 
+## Setup
 To setup this tool, simply run: 
 ```
 ignorify --init
@@ -19,6 +20,7 @@ This will clone the snippets directory down to the proper place in your home dir
 and perform any other necessary setup tasks. After this init operation has been performed
 you should be good to create ignore files as described below.
 
+## Listing available options
 To list the available snippets, use: 
 ```
 ignorify --list
@@ -29,7 +31,7 @@ for a particular snippet. For instance,
 ```
 ignorify --list | grep c++
 ```
-
+## Generating gitignore files
 To generate a gitignore file, simply type out the options that you would 
 like to include in the ignore file: 
 ```
