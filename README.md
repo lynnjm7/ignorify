@@ -51,7 +51,8 @@ ignorify rust  >> .gitignore
 
 # Disclaimer
 I have tested and use this tool on Linux. I haven't tested it on any other operating 
-system. I see no reason why it shouldn't work. I do not currently have any plans 
+system. However, I see no reason why it shouldn't work and porting it should be relatively
+straightforward for the sufficiently tenacious code monkey... But I do not currently have any plans 
 on porting this tool to any other operating system. 
 
 # License
