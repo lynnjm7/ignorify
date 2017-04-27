@@ -7,7 +7,7 @@ use std::collections::HashMap;
 
 ///
 /// Traverse the snippets directory recursively; building a hash table of the file name
-/// to the snippet's path. 
+/// to the snippet's path.
 ///
 fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> io::Result<()> {
     if dir.is_dir() {
@@ -20,16 +20,27 @@ fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> i
             if path.ends_with(".git") {
                 continue;
             }
-            
+
             match path.extension() {
-                Some(x) => if x != "gitignore" {continue;},
-                None => continue
+                Some(x) => {
+                    if x != "gitignore" {
+                        continue;
+                    }
+                }
+                None => continue,
             }
 
             if path.is_dir() {
                 visit_dirs(&path, options)?
             } else {
-                let f = Box::new(entry.path().file_stem().unwrap().to_str().unwrap().to_owned().to_lowercase());
+                let f = Box::new(entry
+                                     .path()
+                                     .file_stem()
+                                     .unwrap()
+                                     .to_str()
+                                     .unwrap()
+                                     .to_owned()
+                                     .to_lowercase());
                 let p = Box::new(entry.path());
                 options.insert(f, p);
             }

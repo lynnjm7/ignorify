@@ -21,9 +21,9 @@ fn main() {
                  .takes_value(true)
                  .index(1))
         .arg(Arg::with_name("list")
-                    .short("l")
-                    .long("list")
-                    .help("List the available platforms and langauge snippets that are available"))
+                 .short("l")
+                 .long("list")
+                 .help("List the available platforms and langauge snippets that are available"))
         .get_matches();
 
     if cmd_args.is_present("init") {
