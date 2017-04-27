@@ -1,0 +1,36 @@
+extern crate clap;
+use clap::{App, Arg};
+
+fn main() {
+    // On first run of the program, clone down and setup the necessary gitignore snippets.
+    // Process command line arguments.
+    let cmd_args = App::new("Ignorify")
+        .version("1.0")
+        .author("Josh Lynn <lynnjm7@gmail.com>")
+        .about("Creates gitignore files.")
+        .arg(Arg::with_name("init")
+                 .short("i")
+                 .long("init")
+                 .help("Runs the initial setup"))
+        .arg(Arg::with_name("options")
+                 .short("o")
+                 .long("option")
+                 .help("Add a platform or language to be included in the gitignore file")
+                 .multiple(true)
+                 .takes_value(true)
+                 .index(1)
+                 .required(true))
+        .get_matches();
+
+    let init_opt = cmd_args.is_present("init"); 
+    println!("{}", init_opt);
+
+    // Gather the languages and platforms to generate the ignore file for
+    let files: Vec<_> = cmd_args.values_of("options").unwrap().collect();
+    for f in files {
+        println!("{}", f);
+    }
+    // Using the command line arguments, process the given list of platforms & languages to produce
+    // the gitignore file.
+    println!("Hello, world!");
+}

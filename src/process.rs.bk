@@ -1,0 +1,37 @@
+use std::env;
+use std::fs;
+use std::path::Path;
+use std::collections::HashMap;
+
+// let mut options = HashMap::new();
+fn visit_dirs(dir: &Path, cb: &Fn(&DirEntry)) -> io::Result<()> {
+        if dir.is_dir() {
+                    for entry in fs::read_dir(dir)? {
+                                    let entry = entry?;
+                                                let path = entry.path();
+                                                            if path.is_dir() {
+                                                                                visit_dirs(&path, cb)?;
+                                                                                            } else {
+                                                                                                                cb(&entry);
+                                                                                                                            }
+                                                                    }
+                        }
+            Ok(())
+}
+///
+/// Generate a map of potential options from the ~/.ignorify/snippets directory.
+///
+fn list_options() {
+    let mut dir = env::home_dir().unwrap();
+    dir.push(".ignorify");
+    dir.push("snippets");
+
+    visit_dirs(dir.as_path());
+}
+
+pub fn generate_ignore(opts: Vec<&str>) {
+    list_options();
+    for o in opts {
+        println!("{}", o.to_string().to_lowercase());
+    }
+}
