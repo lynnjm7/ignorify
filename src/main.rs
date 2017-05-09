@@ -5,6 +5,7 @@ use clap::{App, Arg};
 use ignorify::{init, process};
 
 fn main() {
+    // Setup the command line arguments
     let cmd_args = App::new("Ignorify")
         .version("1.0")
         .author("Josh Lynn <lynnjm7@gmail.com>")
@@ -26,11 +27,13 @@ fn main() {
                  .help("List the available platforms and langauge snippets that are available"))
         .get_matches();
 
+    // If the init command is specified, run the init operation
     if cmd_args.is_present("init") {
         init::setup_ignorify();
         return;
     }
 
+    // If the list command is specicied, list all the available snippets
     if cmd_args.is_present("list") {
         process::list_options(true);
         return;

@@ -34,6 +34,8 @@ fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> i
                 }
 
 
+                // Because we need to return these values, they need to be boxed
+                // on the free store/heap.
                 let f = Box::new(entry
                                      .path()
                                      .file_stem()
@@ -70,6 +72,11 @@ pub fn list_options(display: bool) -> HashMap<Box<String>, Box<PathBuf>> {
     options
 }
 
+///
+/// Generate the GitIgnore file from the list of options and write the file
+/// to stdout. The output from stdout can be redirected into a file or
+/// piped into another *nix command.
+///
 pub fn generate_ignore(in_opts: Vec<&str>) {
     let avail_opts = list_options(false);
 
