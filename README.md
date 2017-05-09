@@ -4,9 +4,9 @@ This project is a personal tool that I built to generate gitignore files. It
 uses the snippets that are provided by GitHub. The snippets that are used to 
 generate the actual gitignore files are stored in `~/.ignorify/snippets`. 
 
-This project serves two purposes, it lets me build utility that I've wanted 
+This project serves two purposes, it lets me build a utility that I've wanted 
 for a while and it gives me a toy to play around with the Rust programming
-language from Mozilla.
+language.
 
 # Usage
 There are several different ways to use this app. For some instructions use 
