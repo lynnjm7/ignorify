@@ -4,7 +4,6 @@ This project is a personal tool that I built to generate gitignore files. It
 uses the snippets that are provided by GitHub. The snippets that are used to 
 generate the actual gitignore files are stored in `~/.ignorify/snippets`. 
 
-
 # Usage
 There are several different ways to use this app. For some instructions use 
 ```
@@ -31,6 +30,7 @@ for a particular snippet. For instance,
 ```
 ignorify --list | grep c++
 ```
+
 ## Generating gitignore files
 To generate a gitignore file, simply type out the options that you would 
 like to include in the ignore file: 
