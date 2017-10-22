@@ -1,11 +1,12 @@
 Ignorify
 ========
-This is a personal tool that I built to generate gitignore files. It 
-uses the snippets that are provided by GitHub. The snippets that are used to 
-generate the actual gitignore files are stored in `~/.ignorify/snippets`. 
+This is a personal tool that I built to generate gitignore files. It uses snippets 
+based on the [GitHub ignore snippets](https://github.com/lynnjm7/gitignore).
+The snippets, along with configuration files, are stored on the users local machine 
+in `~/.ignorify/`. 
 
-This project served two purposes, it let me build a utility that I've wanted 
-for a while and it gave me a toy to play around with learning the Rust programming
+This project served two purposes: (1) it let me build a utility that I've wanted 
+for a while and (2) it gave me a toy to play around with learning the Rust programming
 language.
 
 # Usage
