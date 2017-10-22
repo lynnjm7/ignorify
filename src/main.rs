@@ -4,12 +4,17 @@ extern crate clap;
 use clap::{App, Arg};
 use ignorify::{init, process};
 
+// Get the package configuration details from the Cargo.toml file
+const NAME: &'static str = env!("CARGO_PKG_NAME");
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+const AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
+
 fn main() {
     // Setup the command line arguments
-    let cmd_args = App::new("Ignorify")
-        .version("1.0")
-        .author("Josh Lynn <lynnjm7@gmail.com>")
-        .about("Creates gitignore files.")
+    let cmd_args = App::new(NAME)
+        .version(VERSION)
+        .author(AUTHORS)
+        .about("Command line utility to create gitignore files.")
         .arg(Arg::with_name("init")
                  .short("i")
                  .long("init")
@@ -24,7 +29,7 @@ fn main() {
         .arg(Arg::with_name("list")
                  .short("l")
                  .long("list")
-                 .help("List the available platforms and langauge snippets that are available"))
+                 .help("List the available platforms and langauge snippets that are available",))
         .get_matches();
 
     // If the init command is specified, run the init operation

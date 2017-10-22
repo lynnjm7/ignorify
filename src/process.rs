@@ -5,16 +5,13 @@ use std::io::prelude::*;
 use std::path::{Path, PathBuf};
 use std::collections::HashMap;
 
-///
 /// Traverse the snippets directory recursively; building a hash table of the file name
 /// to the snippet's path.
-///
 fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> io::Result<()> {
     if dir.is_dir() {
         for entry in fs::read_dir(dir)? {
             let entry = entry?;
             let path = entry.path();
-
 
             // Ignore the '.git' repository that was cloned for the snippets
             if path.ends_with(".git") {
@@ -32,7 +29,6 @@ fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> i
                     }
                     None => continue,
                 }
-
 
                 // Because we need to return these values, they need to be boxed
                 // on the free store/heap.
@@ -52,9 +48,7 @@ fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> i
     Ok(())
 }
 
-///
 /// Generate a map of potential options from the ~/.ignorify/snippets directory.
-///
 pub fn list_options(display: bool) -> HashMap<Box<String>, Box<PathBuf>> {
     let mut dir = env::home_dir().unwrap();
     dir.push(".ignorify");
@@ -72,11 +66,9 @@ pub fn list_options(display: bool) -> HashMap<Box<String>, Box<PathBuf>> {
     options
 }
 
-///
 /// Generate the GitIgnore file from the list of options and write the file
 /// to stdout. The output from stdout can be redirected into a file or
 /// piped into another *nix command.
-///
 pub fn generate_ignore(in_opts: Vec<&str>) {
     let avail_opts = list_options(false);
 

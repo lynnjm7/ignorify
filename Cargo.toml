@@ -1,7 +1,7 @@
 [package]
 name = "ignorify"
-version = "0.1.0"
-authors = ["josh"]
+version = "1.0.0"
+authors = ["Josh Lynn <lynnjm7@gmail.com>"]
 
 [dependencies]
 clap = "*"
