@@ -1,6 +1,6 @@
 [package]
 name = "ignorify"
-version = "1.0.0"
+version = "0.1"
 authors = ["Josh Lynn <lynnjm7@gmail.com>"]
 
 [dependencies]
