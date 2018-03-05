@@ -45,6 +45,12 @@ fn main() {
     }
 
     // Gather the languages and platforms to generate the ignore file for
-    let files = cmd_args.values_of("options").unwrap().collect();
+    let files = match cmd_args.values_of("options") {
+        Some(x) => x.collect(),
+        None => {
+            println!("For usage information please use --help");
+            std::process::exit(0);
+        }
+    };
     process::generate_ignore(files);
 }
