@@ -15,21 +15,23 @@ fn main() {
         .version(VERSION)
         .author(AUTHORS)
         .about("Command line utility to create gitignore files.")
-        .arg(Arg::with_name("init")
-                 .short("i")
-                 .long("init")
-                 .help("Runs the initial setup"))
-        .arg(Arg::with_name("options")
-                 .short("o")
-                 .long("option")
-                 .help("Add a platform or language to be included in the gitignore file")
-                 .multiple(true)
-                 .takes_value(true)
-                 .index(1))
-        .arg(Arg::with_name("list")
-                 .short("l")
-                 .long("list")
-                 .help("List the available platforms and langauge snippets that are available",))
+        .arg(Arg::with_name("init").short("i").long("init").help(
+            "Runs the initial setup",
+        ))
+        .arg(
+            Arg::with_name("options")
+                .short("o")
+                .long("option")
+                .help(
+                    "Add a platform or language to be included in the gitignore file",
+                )
+                .multiple(true)
+                .takes_value(true)
+                .index(1),
+        )
+        .arg(Arg::with_name("list").short("l").long("list").help(
+            "List the available platforms and langauge snippets that are available",
+        ))
         .get_matches();
 
     // If the init command is specified, run the init operation

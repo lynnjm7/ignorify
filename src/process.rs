@@ -32,14 +32,16 @@ fn visit_dirs(dir: &Path, options: &mut HashMap<Box<String>, Box<PathBuf>>) -> i
 
                 // Because we need to return these values, they need to be boxed
                 // on the free store/heap.
-                let f = Box::new(entry
-                                     .path()
-                                     .file_stem()
-                                     .unwrap()
-                                     .to_str()
-                                     .unwrap()
-                                     .to_owned()
-                                     .to_lowercase());
+                let f = Box::new(
+                    entry
+                        .path()
+                        .file_stem()
+                        .unwrap()
+                        .to_str()
+                        .unwrap()
+                        .to_owned()
+                        .to_lowercase(),
+                );
                 let p = Box::new(entry.path());
                 options.insert(f, p);
             }
@@ -77,7 +79,13 @@ pub fn generate_ignore(in_opts: Vec<&str>) {
     for op in in_opts {
         let s = op.to_string().to_lowercase();
         println!("### {} ###", s);
-        let p = avail_opts.get(&s).unwrap().as_path();
+        let p = match avail_opts.get(&s) {
+            Some(x) => x.as_path(),
+            None => {
+                println!("# Invalid selection! Please use --list to see available options.\n");
+                continue;
+            }
+        };
         let mut file = File::open(p).unwrap();
         let mut contents = String::new();
         file.read_to_string(&mut contents).unwrap();
