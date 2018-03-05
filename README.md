@@ -30,7 +30,7 @@ which should show the ignorify version information.
 
 To complete the installation, run the setup command that is built into the tool.
 This will run the initiation steps to finish installing ignorify. See the 
-[Setup](##setup) section of this document for more information.
+[Setup](#setup) section of this document for more information.
 
 # Usage
 There are several different ways to use this app. For some instructions use
